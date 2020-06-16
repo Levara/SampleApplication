@@ -1,1 +1,4 @@
-# empty
+zegac:
+  name: Josip Ouzecky
+  email: josip.ouzecky125@gmail.com
+  password_digest: <%= User.digest('password') %>
