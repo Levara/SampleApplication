@@ -1,0 +1,12 @@
+one:
+  follower: zegac
+  followed: lana
+two:
+  follower: zegac
+  followed: malory
+three:
+  follower: lana
+  followed: zegac
+four:
+  follower: archer
+  followed: zegac
