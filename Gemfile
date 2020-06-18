@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+#Image Magick for resizing images
+gem 'image_processing', '1.9.3'
+gem 'mini_magick', '4.9.5'
+#Active storage for image
+gem 'active_storage_validations', '0.8.2'
+#Ruby version
 ruby '2.7.0'
 # Adding gem file for hast
 gem 'bcrypt', '3.1.13'
