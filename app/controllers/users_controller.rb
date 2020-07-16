@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers, :start_job]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
 
@@ -60,6 +60,14 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
+
+  def start_job
+    duration = params[:duration].present? ? params[:duration] : 10
+    TestWorkloadJob.perform_later user: current_user, duration: duration
+    flash[:success] = "Job is enqueued"
+    redirect_to root_path
+  end
+
 
   private 
     
