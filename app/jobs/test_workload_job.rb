@@ -1,10 +1,17 @@
 class TestWorkloadJob < ApplicationJob
   queue_as :urgent
 
-  def perform(*args)
-    puts "======================================"
-    puts args
+  def perform(user: nil, duration: 20)
+    if user.nil? 
+      puts  "TODO: bacanje greske ako nema useraa"
+    end
+      
+    job = user.my_jobs.create(title: "Task od #{duration} sekundi", start: DateTime.now)
 
-    # Do something later
+    `sleep #{duration}`
+
+    job.end = DateTime.now
+    job.save
   end
+
 end
